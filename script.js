@@ -259,19 +259,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(contactForm);
 
-        // Add required FormSubmit AJAX fields to the form data
-        formData.append('_subject', 'New Inquiry — Unreal AI Studio');
-        formData.append('_captcha', 'false');
-        formData.append('_template', 'table');
+        // Web3Forms — no activation needed, sends directly to info@unreal.ae
+        formData.append('access_key', 'be558325-1940-42d9-84b0-ed7b7398461d');
+        formData.append('subject', 'New Inquiry — Unreal AI Studio');
+        formData.append('from_name', 'Unreal AI Studio Website');
 
-        fetch('https://formsubmit.co/ajax/info@unreal.ae', {
+        fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData,
             headers: { 'Accept': 'application/json' }
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success === 'true' || data.success === true) {
+            if (data.success) {
                 formSuccess.hidden = false;
                 formSuccess.style.display = 'flex';
                 formSuccess.innerHTML = `
