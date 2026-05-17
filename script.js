@@ -259,13 +259,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(contactForm);
 
-        fetch(contactForm.action, {
+        // Add required FormSubmit AJAX fields to the form data
+        formData.append('_subject', 'New Inquiry — Unreal AI Studio');
+        formData.append('_captcha', 'false');
+        formData.append('_template', 'table');
+
+        fetch('https://formsubmit.co/ajax/info@unreal.ae', {
             method: 'POST',
             body: formData,
             headers: { 'Accept': 'application/json' }
         })
-        .then(response => {
-            if (response.ok) {
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === 'true' || data.success === true) {
                 formSuccess.hidden = false;
                 formSuccess.style.display = 'flex';
                 formSuccess.innerHTML = `
