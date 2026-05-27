@@ -96,7 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const isOpen = navLinks.classList.toggle('open');
         menuToggle.classList.toggle('active');
         menuToggle.setAttribute('aria-expanded', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        // Don't lock body scroll — drawer doesn't cover full screen
+    });
+
+    // Close menu when a nav link is tapped
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        });
     });
 
     // Close menu on link click
