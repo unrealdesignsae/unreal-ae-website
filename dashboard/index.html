@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unreal — Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --accent: #ffffff;
+      --muted: #444444;
+      --text: #e0e0e0;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── GATE ── */
+    #gate {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      z-index: 100;
+      transition: opacity 0.3s ease;
+    }
+
+    #gate.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .gate-logo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .gate-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 280px;
+    }
+
+    .gate-input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-family: var(--font);
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.2em;
+      transition: border-color 0.2s;
+    }
+
+    .gate-input:focus { border-color: #333; }
+    .gate-input.error { border-color: #ff4444; animation: shake 0.3s ease; }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    .gate-btn {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .gate-btn:hover { opacity: 0.85; }
+
+    /* ── SHELL ── */
+    #shell {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.1s;
+    }
+
+    #shell.visible { opacity: 1; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: 48px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .topbar-logo {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .topbar-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .topbar-lock {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font);
+      letter-spacing: 0.05em;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .topbar-lock:hover { color: var(--accent); border-color: #333; }
+
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: var(--bg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GATE -->
+  <div id="gate">
+    <span class="gate-logo">Unreal.ae</span>
+    <span class="gate-title">Command Center</span>
+    <div class="gate-form">
+      <input
+        id="pwd"
+        class="gate-input"
+        type="password"
+        placeholder="Access code"
+        maxlength="20"
+        autocomplete="off"
+      />
+      <button class="gate-btn" onclick="unlock()">Enter</button>
+    </div>
+  </div>
+
+  <!-- SHELL -->
+  <div id="shell">
+    <div class="topbar">
+      <span class="topbar-logo">Unreal</span>
+      <span class="topbar-label">Command Center</span>
+      <button class="topbar-lock" onclick="lock()">Lock</button>
+    </div>
+    <iframe
+      id="frame"
+      src=""
+      allow="clipboard-read; clipboard-write"
+    ></iframe>
+  </div>
+
+  <script>
+    const PASS = '2403';
+    const DASH = 'https://mon-highway-coat-orientation.trycloudflare.com';
+    const KEY  = 'unreal_dash_auth';
+
+    const gate  = document.getElementById('gate');
+    const shell = document.getElementById('shell');
+    const frame = document.getElementById('frame');
+    const pwd   = document.getElementById('pwd');
+
+    function unlock() {
+      if (pwd.value === PASS) {
+        sessionStorage.setItem(KEY, '1');
+        gate.classList.add('hidden');
+        shell.classList.add('visible');
+        frame.src = DASH;
+      } else {
+        pwd.classList.add('error');
+        pwd.value = '';
+        setTimeout(() => pwd.classList.remove('error'), 600);
+      }
+    }
+
+    function lock() {
+      sessionStorage.removeItem(KEY);
+      frame.src = '';
+      shell.classList.remove('visible');
+      gate.classList.remove('hidden');
+      pwd.value = '';
+      pwd.focus();
+    }
+
+    pwd.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+
+    // Auto-unlock if already authenticated this session
+    if (sessionStorage.getItem(KEY) === '1') {
+      gate.classList.add('hidden');
+      shell.classList.add('visible');
+      frame.src = DASH;
+    } else {
+      pwd.focus();
+    }
+  </script>
+</body>
+</html>
