@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:55:01Z",
+  "generated_at": "2026-05-28T17:00:02Z",
   "profiles": [
     {
       "id": "comms",
@@ -17,8 +17,8 @@
       "name": "Content",
       "role": "Content Pipeline",
       "status": "active",
-      "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "8m ago",
+      "last_activity": "2026-05-28T16:57:31Z",
+      "last_activity_rel": "2m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -35,8 +35,8 @@
       "name": "Creative",
       "role": "Visual & CGI",
       "status": "active",
-      "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "8m ago",
+      "last_activity": "2026-05-28T16:57:31Z",
+      "last_activity_rel": "2m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -46,8 +46,8 @@
       "name": "Dev",
       "role": "Website Delivery",
       "status": "active",
-      "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "8m ago",
+      "last_activity": "2026-05-28T16:57:31Z",
+      "last_activity_rel": "2m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -75,10 +75,10 @@
       "name": "Leads",
       "role": "Lead Generation",
       "status": "active",
-      "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "8m ago",
+      "last_activity": "2026-05-28T16:57:31Z",
+      "last_activity_rel": "2m ago",
       "last_session_title": null,
-      "total_sessions": 1,
+      "total_sessions": 2,
       "schedules": [
         {
           "id": "daily-lead-scan",
@@ -99,8 +99,8 @@
       "name": "Orchestrator",
       "role": "System Conductor",
       "status": "active",
-      "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "8m ago",
+      "last_activity": "2026-05-28T16:57:31Z",
+      "last_activity_rel": "2m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -173,8 +173,16 @@
       "agent": "Ninja",
       "source": "telegram",
       "title": null,
+      "started_at": "2026-05-28T16:57:31Z",
+      "started_at_rel": "2m ago",
+      "cost_usd": 0.0342
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": null,
       "started_at": "2026-05-28T16:46:41Z",
-      "started_at_rel": "8m ago",
+      "started_at_rel": "13m ago",
       "cost_usd": 0.0434
     },
     {
@@ -280,14 +288,6 @@
       "started_at": "2026-05-27T06:11:40Z",
       "started_at_rel": "1d ago",
       "cost_usd": 0.0376
-    },
-    {
-      "agent": "Ninja",
-      "source": "cli",
-      "title": "Covert Operation Instructions Discussion",
-      "started_at": "2026-05-27T06:01:19Z",
-      "started_at_rel": "1d ago",
-      "cost_usd": 0.0885
     }
   ]
 }
