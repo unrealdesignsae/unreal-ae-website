@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T21:35:01Z",
+  "generated_at": "2026-05-28T21:40:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -34,9 +34,9 @@
       "id": "creative",
       "name": "Creative",
       "role": "Visual & CGI",
-      "status": "recent",
-      "last_activity": "2026-05-28T17:12:54Z",
-      "last_activity_rel": "4h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T21:36:33Z",
+      "last_activity_rel": "3m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -170,6 +170,14 @@
   "tasks": [],
   "activity": [
     {
+      "agent": "Hermes",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-28T21:36:33Z",
+      "started_at_rel": "3m ago",
+      "cost_usd": 0.0177
+    },
+    {
       "agent": "Ninja",
       "source": "telegram",
       "title": null,
@@ -278,14 +286,6 @@
       "source": "telegram",
       "title": "Team Status and Overdue Items",
       "started_at": "2026-05-27T08:10:28Z",
-      "started_at_rel": "1d ago",
-      "cost_usd": 0.0
-    },
-    {
-      "agent": "Ninja",
-      "source": "cli",
-      "title": null,
-      "started_at": "2026-05-27T07:07:53Z",
       "started_at_rel": "1d ago",
       "cost_usd": 0.0
     }
