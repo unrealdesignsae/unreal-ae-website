@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:30:01Z",
+  "generated_at": "2026-05-28T16:35:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -18,7 +18,7 @@
       "role": "Content Pipeline",
       "status": "recent",
       "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "4h ago",
+      "last_activity_rel": "5h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -36,7 +36,7 @@
       "role": "Visual & CGI",
       "status": "recent",
       "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "4h ago",
+      "last_activity_rel": "5h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -47,7 +47,7 @@
       "role": "Website Delivery",
       "status": "recent",
       "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "4h ago",
+      "last_activity_rel": "5h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -100,7 +100,7 @@
       "role": "System Conductor",
       "status": "recent",
       "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "4h ago",
+      "last_activity_rel": "5h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -174,7 +174,7 @@
       "source": "email",
       "title": null,
       "started_at": "2026-05-28T11:33:22Z",
-      "started_at_rel": "4h ago",
+      "started_at_rel": "5h ago",
       "cost_usd": 0.0106
     },
     {
