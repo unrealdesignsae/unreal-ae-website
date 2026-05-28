@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T22:10:02Z",
+  "generated_at": "2026-05-28T22:15:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -18,7 +18,7 @@
       "role": "Content Pipeline",
       "status": "active",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "21m ago",
+      "last_activity_rel": "26m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -36,7 +36,7 @@
       "role": "Visual & CGI",
       "status": "active",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "21m ago",
+      "last_activity_rel": "26m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -47,7 +47,7 @@
       "role": "Website Delivery",
       "status": "active",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "21m ago",
+      "last_activity_rel": "26m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -76,7 +76,7 @@
       "role": "Lead Generation",
       "status": "active",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "21m ago",
+      "last_activity_rel": "26m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -100,7 +100,7 @@
       "role": "System Conductor",
       "status": "active",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "21m ago",
+      "last_activity_rel": "26m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -174,7 +174,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T21:48:16Z",
-      "started_at_rel": "21m ago",
+      "started_at_rel": "26m ago",
       "cost_usd": 0.0166
     },
     {
@@ -182,7 +182,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T21:36:33Z",
-      "started_at_rel": "33m ago",
+      "started_at_rel": "38m ago",
       "cost_usd": 0.0493
     },
     {
@@ -190,7 +190,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T17:12:54Z",
-      "started_at_rel": "4h ago",
+      "started_at_rel": "5h ago",
       "cost_usd": 0.047
     },
     {
@@ -198,7 +198,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T17:12:34Z",
-      "started_at_rel": "4h ago",
+      "started_at_rel": "5h ago",
       "cost_usd": 0.0
     },
     {
@@ -206,7 +206,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T17:11:24Z",
-      "started_at_rel": "4h ago",
+      "started_at_rel": "5h ago",
       "cost_usd": 0.0226
     },
     {
