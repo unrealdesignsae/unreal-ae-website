@@ -1,0 +1,293 @@
+{
+  "generated_at": "2026-05-28T15:42:52Z",
+  "profiles": [
+    {
+      "id": "comms",
+      "name": "Comms",
+      "role": "Email & Client Triage",
+      "status": "deployed",
+      "last_activity": null,
+      "last_activity_rel": null,
+      "last_session_title": null,
+      "total_sessions": 0,
+      "schedules": []
+    },
+    {
+      "id": "content",
+      "name": "Content",
+      "role": "Content Pipeline",
+      "status": "recent",
+      "last_activity": "2026-05-28T11:33:22Z",
+      "last_activity_rel": "4h ago",
+      "last_session_title": null,
+      "total_sessions": 5,
+      "schedules": [
+        {
+          "id": "monday-content-brief",
+          "description": "Weekly content brief from studio output: 3-5 post angles \u2192 Telegram approval gate",
+          "cron": "Mon 07:30 Dubai",
+          "skill": "weekly-content-brief"
+        }
+      ]
+    },
+    {
+      "id": "creative",
+      "name": "Creative",
+      "role": "Visual & CGI",
+      "status": "recent",
+      "last_activity": "2026-05-28T11:33:22Z",
+      "last_activity_rel": "4h ago",
+      "last_session_title": null,
+      "total_sessions": 5,
+      "schedules": []
+    },
+    {
+      "id": "dev",
+      "name": "Dev",
+      "role": "Website Delivery",
+      "status": "recent",
+      "last_activity": "2026-05-28T11:33:22Z",
+      "last_activity_rel": "4h ago",
+      "last_session_title": null,
+      "total_sessions": 5,
+      "schedules": []
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "role": "Financial Intelligence",
+      "status": "scheduled",
+      "last_activity": null,
+      "last_activity_rel": null,
+      "last_session_title": null,
+      "total_sessions": 0,
+      "schedules": [
+        {
+          "id": "monday-financial-brief",
+          "description": "Weekly financial brief: Stripe + ENBD \u2192 financial_weekly.md \u2192 Telegram",
+          "cron": "Mon 07:00 Dubai",
+          "skill": "weekly-brief"
+        }
+      ]
+    },
+    {
+      "id": "leads",
+      "name": "Leads",
+      "role": "Lead Generation",
+      "status": "scheduled",
+      "last_activity": null,
+      "last_activity_rel": null,
+      "last_session_title": null,
+      "total_sessions": 0,
+      "schedules": [
+        {
+          "id": "daily-lead-scan",
+          "description": "Daily Dubai ICP scan. Vibe Prospecting + Apify + Firecrawl. Qualify \u2192 sample \u2192 Black approval.",
+          "cron": "Daily 06:00 Dubai",
+          "skill": "daily-lead-scan"
+        },
+        {
+          "id": "monday-leads-brief",
+          "description": "Weekly leads pipeline summary: prospects scanned, qualified, outreach sent, replies, warm escalations.",
+          "cron": "Mon 07:15 Dubai",
+          "skill": "leads-weekly-brief"
+        }
+      ]
+    },
+    {
+      "id": "orchestrator",
+      "name": "Orchestrator",
+      "role": "System Conductor",
+      "status": "recent",
+      "last_activity": "2026-05-28T11:33:22Z",
+      "last_activity_rel": "4h ago",
+      "last_session_title": null,
+      "total_sessions": 5,
+      "schedules": []
+    },
+    {
+      "id": "strategist",
+      "name": "Strategist",
+      "role": "Market Strategist",
+      "status": "deployed",
+      "last_activity": "2026-05-26T21:52:11Z",
+      "last_activity_rel": "1d ago",
+      "last_session_title": "Accessing and Extracting YouTube Short Details",
+      "total_sessions": 5,
+      "schedules": []
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy",
+      "role": "OS Strategy & Synthesis",
+      "status": "scheduled",
+      "last_activity": "2026-05-27T06:01:19Z",
+      "last_activity_rel": "1d ago",
+      "last_session_title": "Covert Operation Instructions Discussion",
+      "total_sessions": 5,
+      "schedules": [
+        {
+          "id": "friday-check",
+          "description": "Friday 17:00 Dubai: end-of-week reality check against Monday's plan. Only sends if something significant happened.",
+          "cron": "Fri 17:00 Dubai",
+          "skill": "friday-check"
+        },
+        {
+          "id": "monday-os-brief",
+          "description": "Monday OS brief: synthesize all 5 weekly briefs \u2192 os_weekly.md \u2192 Telegram. Runs after finance (03:00), leads (03:15), content (03:30).",
+          "cron": "Mon 08:00 Dubai",
+          "skill": "monday-os-brief"
+        }
+      ]
+    }
+  ],
+  "brain": {
+    "financial": {
+      "current_monthly": "15000",
+      "enbd_current": "** [UPDATE THIS EACH WEEK]",
+      "snippet": "---\ntype: context\nstatus: active\ntags: [financial, income, expenses, targets]\nupdated: 2026-05-28\n---\n\n## Income (Current)\n\n| Source | Monthly (AED) | Notes |\n|--------|--------------|-------|\n| Salary (full-time job) | 21,000 | Being phased out. Not the target. |\n| Studio / freelance | 8,000-12,000 | Current Unreal.ae income. Target to scale. |\n| **Total current** | **~29,000-33,000** | |\n\n## Fix"
+    },
+    "projects": [
+      {
+        "name": "The Katies Trust: Website",
+        "status": "active"
+      },
+      {
+        "name": "Nodal Technical Consultancy: Website",
+        "status": "active"
+      },
+      {
+        "name": "Porsche: Experiential Event Design & Immersive Branding",
+        "status": "active"
+      }
+    ],
+    "leads": {
+      "pipeline_count": 3,
+      "hot": 1
+    },
+    "strategy_focus": "date: 2026-05-19\n---"
+  },
+  "tasks": [],
+  "activity": [
+    {
+      "agent": "Ninja",
+      "source": "email",
+      "title": null,
+      "started_at": "2026-05-28T11:33:22Z",
+      "started_at_rel": "4h ago",
+      "cost_usd": 0.0106
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-28T06:09:46Z",
+      "started_at_rel": "9h ago",
+      "cost_usd": 0.5368
+    },
+    {
+      "agent": "Ninja",
+      "source": "cli",
+      "title": null,
+      "started_at": "2026-05-28T05:41:06Z",
+      "started_at_rel": "10h ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Ninja",
+      "source": "cli",
+      "title": null,
+      "started_at": "2026-05-28T05:29:38Z",
+      "started_at_rel": "10h ago",
+      "cost_usd": 0.079
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-27T20:22:02Z",
+      "started_at_rel": "19h ago",
+      "cost_usd": 0.0316
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": "Planning a new project or product #2",
+      "started_at": "2026-05-27T20:05:46Z",
+      "started_at_rel": "19h ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Hermes",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-27T15:30:21Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": "Planning a new project or product",
+      "started_at": "2026-05-27T08:46:28Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": "Team Status and Overdue Items",
+      "started_at": "2026-05-27T08:10:28Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Ninja",
+      "source": "cli",
+      "title": null,
+      "started_at": "2026-05-27T07:07:53Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": "Hybrid Memory Architecture Implementation",
+      "started_at": "2026-05-27T06:42:46Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0403
+    },
+    {
+      "agent": "Hermes",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-27T06:42:41Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0
+    },
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-27T06:11:40Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0376
+    },
+    {
+      "agent": "Ninja",
+      "source": "cli",
+      "title": "Covert Operation Instructions Discussion",
+      "started_at": "2026-05-27T06:01:19Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0885
+    },
+    {
+      "agent": "Ninja",
+      "source": "cli",
+      "title": "SSH Configuration Change Warning",
+      "started_at": "2026-05-27T05:57:48Z",
+      "started_at_rel": "1d ago",
+      "cost_usd": 0.0776
+    }
+  ]
+}

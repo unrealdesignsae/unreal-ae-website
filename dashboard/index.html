@@ -1,244 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unreal — Dashboard</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>UNREAL OS — Mission Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:      #080808;
+  --bg2:     #0d0d0d;
+  --bg3:     #141414;
+  --bg4:     #1a1a1a;
+  --border:  #202020;
+  --border2: #2a2a2a;
+  --coral:   #E07A4F;
+  --coral2:  rgba(224,122,79,.15);
+  --coral3:  rgba(224,122,79,.07);
+  --green:   #3DDC84;
+  --yellow:  #F5C842;
+  --red:     #FF5555;
+  --blue:    #4F8EE0;
+  --white:   #F2EDE8;
+  --muted:   #555;
+  --muted2:  #888;
+  --font:    'Inter', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;background:var(--bg);color:var(--white);font-family:var(--font);font-size:13px;overflow-x:hidden;}
 
-    :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #1e1e1e;
-      --accent: #ffffff;
-      --muted: #444444;
-      --text: #e0e0e0;
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
-    }
+/* ── GATE ─────────────────────────────────────────────────────────── */
+#gate{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200;transition:opacity .3s ease;}
+#gate.hidden{opacity:0;pointer-events:none;}
+.gate-mark{font-size:10px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);}
+.gate-title{font-size:22px;font-weight:500;letter-spacing:-.03em;color:var(--white);}
+.gate-form{display:flex;flex-direction:column;gap:10px;width:260px;}
+.gate-input{background:var(--bg3);border:1px solid var(--border);color:var(--white);font-family:var(--font);font-size:14px;padding:12px 16px;border-radius:6px;outline:none;text-align:center;letter-spacing:.25em;transition:border-color .2s;}
+.gate-input:focus{border-color:var(--border2);}
+.gate-input.error{border-color:var(--red);animation:shake .3s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.gate-btn{background:var(--white);color:#000;border:none;font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px;border-radius:6px;cursor:pointer;transition:opacity .2s;}
+.gate-btn:hover{opacity:.85;}
 
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      height: 100dvh;
-      display: flex;
-      flex-direction: column;
-    }
+/* ── SHELL ─────────────────────────────────────────────────────────── */
+#shell{display:flex;flex-direction:column;height:100vh;opacity:0;transition:opacity .4s ease .1s;}
+#shell.visible{opacity:1;}
 
-    /* ── GATE ── */
-    #gate {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      z-index: 100;
-      transition: opacity 0.3s ease;
-    }
+/* ── TOPBAR ─────────────────────────────────────────────────────────── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:48px;border-bottom:1px solid var(--border);flex-shrink:0;gap:16px;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-logo{font-size:10px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);}
+.topbar-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+.topbar-status{font-size:11px;color:var(--muted2);font-family:var(--mono);}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+.topbar-refresh{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:4px 12px;border-radius:4px;cursor:pointer;font-family:var(--font);letter-spacing:.05em;transition:color .2s,border-color .2s;}
+.topbar-refresh:hover{color:var(--white);border-color:var(--border2);}
+.topbar-lock{background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;font-family:var(--font);letter-spacing:.05em;transition:color .2s;}
+.topbar-lock:hover{color:var(--white);}
 
-    #gate.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
+/* ── TABS ─────────────────────────────────────────────────────────── */
+.tabbar{display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--border);flex-shrink:0;gap:2px;}
+.tab{background:none;border:none;color:var(--muted);font-family:var(--font);font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:12px 16px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;}
+.tab:hover{color:var(--muted2);}
+.tab.active{color:var(--white);border-bottom-color:var(--coral);}
 
-    .gate-logo {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+/* ── CONTENT ─────────────────────────────────────────────────────── */
+.content{flex:1;overflow-y:auto;padding:24px 20px;}
 
-    .gate-title {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: -0.02em;
-    }
+/* ── VIEWS ─────────────────────────────────────────────────────────── */
+.view{display:none;}
+.view.active{display:block;}
 
-    .gate-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 280px;
-    }
+/* ── AGENT GRID ─────────────────────────────────────────────────── */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
 
-    .gate-input {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-family: var(--font);
-      font-size: 14px;
-      padding: 12px 16px;
-      border-radius: 6px;
-      outline: none;
-      text-align: center;
-      letter-spacing: 0.2em;
-      transition: border-color 0.2s;
-    }
+.agent-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s;}
+.agent-card:hover{border-color:var(--border2);}
+.agent-card.status-active{border-left:2px solid var(--green);}
+.agent-card.status-recent{border-left:2px solid var(--yellow);}
+.agent-card.status-scheduled{border-left:2px solid var(--coral);}
+.agent-card.status-deployed{border-left:2px solid var(--muted);}
 
-    .gate-input:focus { border-color: #333; }
-    .gate-input.error { border-color: #ff4444; animation: shake 0.3s ease; }
+.agent-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.agent-name{font-size:14px;font-weight:600;letter-spacing:-.01em;color:var(--white);}
+.agent-role{font-size:11px;color:var(--muted2);margin-top:2px;line-height:1.4;}
+.agent-status-badge{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.status-dot.active{background:var(--green);box-shadow:0 0 6px var(--green);}
+.status-dot.recent{background:var(--yellow);}
+.status-dot.scheduled{background:var(--coral);}
+.status-dot.deployed{background:var(--muted);}
+.status-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);}
+.status-label.active{color:var(--green);}
+.status-label.recent{color:var(--yellow);}
+.status-label.scheduled{color:var(--coral);}
 
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      25% { transform: translateX(-6px); }
-      75% { transform: translateX(6px); }
-    }
+.agent-meta{display:flex;flex-direction:column;gap:6px;}
+.agent-meta-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.meta-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.meta-value{font-size:11px;color:var(--muted2);font-family:var(--mono);text-align:right;}
+.meta-value.highlight{color:var(--coral);}
 
-    .gate-btn {
-      background: var(--accent);
-      color: #000;
-      border: none;
-      font-family: var(--font);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
+.agent-schedules{display:flex;flex-direction:column;gap:4px;}
+.schedule-pill{display:inline-flex;align-items:center;gap:5px;background:var(--bg4);border:1px solid var(--border);border-radius:4px;padding:4px 8px;font-size:10px;color:var(--muted2);}
+.schedule-pill .pill-dot{width:4px;height:4px;border-radius:50%;background:var(--coral);}
 
-    .gate-btn:hover { opacity: 0.85; }
+/* ── BRAIN VIEW ─────────────────────────────────────────────────── */
+.brain-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:700px){.brain-grid{grid-template-columns:1fr;}}
 
-    /* ── SHELL ── */
-    #shell {
-      display: flex;
-      flex-direction: column;
-      height: 100dvh;
-      opacity: 0;
-      transition: opacity 0.4s ease 0.1s;
-    }
+.brain-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:20px;}
+.brain-card.wide{grid-column:1/-1;}
+.brain-card-title{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
 
-    #shell.visible { opacity: 1; }
+.finance-stat{display:flex;flex-direction:column;gap:16px;}
+.stat-row{display:flex;align-items:center;justify-content:space-between;}
+.stat-label{font-size:12px;color:var(--muted2);}
+.stat-value{font-size:16px;font-weight:600;font-family:var(--mono);color:var(--white);}
+.stat-value.green{color:var(--green);}
+.stat-value.yellow{color:var(--yellow);}
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      height: 48px;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
+.progress-bar-wrap{margin-top:8px;}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:6px;font-size:10px;color:var(--muted);}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--coral);border-radius:2px;transition:width .6s ease;}
 
-    .topbar-logo {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+.project-list{display:flex;flex-direction:column;gap:8px;}
+.project-row{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--bg4);border-radius:5px;}
+.project-name{font-size:12px;color:var(--white);font-weight:500;}
+.project-badge{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:3px;}
+.project-badge.active{background:rgba(61,220,132,.12);color:var(--green);}
+.project-badge.in-progress{background:rgba(245,200,66,.12);color:var(--yellow);}
+.project-badge.paused{background:var(--bg3);color:var(--muted);}
 
-    .topbar-label {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-    }
+.strategy-text{font-size:13px;line-height:1.6;color:var(--muted2);}
 
-    .topbar-lock {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 11px;
-      padding: 5px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: var(--font);
-      letter-spacing: 0.05em;
-      transition: color 0.2s, border-color 0.2s;
-    }
+.leads-stats{display:flex;gap:20px;}
+.leads-stat{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.leads-number{font-size:28px;font-weight:700;font-family:var(--mono);color:var(--white);}
+.leads-number.hot{color:var(--coral);}
+.leads-sublabel{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
 
-    .topbar-lock:hover { color: var(--accent); border-color: #333; }
+/* ── WAR ROOM ─────────────────────────────────────────────────── */
+.warroom-grid{display:grid;grid-template-columns:1fr 340px;gap:12px;}
+@media(max-width:800px){.warroom-grid{grid-template-columns:1fr;}}
 
-    iframe {
-      flex: 1;
-      width: 100%;
-      border: none;
-      background: var(--bg);
-    }
-  </style>
+.activity-feed{background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.feed-header{padding:14px 18px;border-bottom:1px solid var(--border);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.feed-list{display:flex;flex-direction:column;}
+.feed-item{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border);transition:background .15s;}
+.feed-item:last-child{border-bottom:none;}
+.feed-item:hover{background:var(--bg4);}
+.feed-icon{width:28px;height:28px;border-radius:50%;background:var(--bg4);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted2);flex-shrink:0;margin-top:1px;}
+.feed-body{flex:1;min-width:0;}
+.feed-agent{font-size:12px;font-weight:600;color:var(--white);}
+.feed-title{font-size:11px;color:var(--muted2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.feed-meta{display:flex;gap:8px;margin-top:4px;}
+.feed-tag{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg4);padding:2px 6px;border-radius:3px;}
+.feed-time{font-size:9px;color:var(--muted);font-family:var(--mono);margin-top:1px;}
+
+.warroom-sidebar{display:flex;flex-direction:column;gap:12px;}
+
+.standup-card{background:var(--coral3);border:1px solid rgba(224,122,79,.25);border-radius:8px;padding:20px;}
+.standup-title{font-size:12px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.standup-desc{font-size:11px;color:var(--muted2);line-height:1.5;margin-bottom:14px;}
+.standup-btn{width:100%;background:var(--coral);color:#fff;border:none;font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:11px;border-radius:5px;cursor:pointer;transition:opacity .2s;}
+.standup-btn:hover{opacity:.85;}
+.standup-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+.tasks-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.tasks-header{padding:12px 16px;border-bottom:1px solid var(--border);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+.tasks-list{display:flex;flex-direction:column;}
+.task-row{padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.task-row:last-child{border-bottom:none;}
+.task-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.task-dot.in_progress,.task-dot.running{background:var(--green);}
+.task-dot.pending,.task-dot.queued{background:var(--yellow);}
+.task-dot.blocked{background:var(--red);}
+.task-dot.open{background:var(--muted);}
+.task-title{font-size:11px;color:var(--muted2);line-height:1.3;flex:1;}
+.task-assignee{font-size:9px;font-family:var(--mono);color:var(--muted);flex-shrink:0;}
+
+/* ── EMPTY STATE ─────────────────────────────────────────────────── */
+.empty-state{padding:40px 20px;text-align:center;color:var(--muted);}
+
+/* ── LAST UPDATED ─────────────────────────────────────────────────── */
+.last-updated{font-size:10px;color:var(--muted);font-family:var(--mono);text-align:right;padding:8px 0 0;}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+</style>
 </head>
 <body>
 
-  <!-- GATE -->
-  <div id="gate">
-    <span class="gate-logo">Unreal.ae</span>
-    <span class="gate-title">Command Center</span>
-    <div class="gate-form">
-      <input
-        id="pwd"
-        class="gate-input"
-        type="password"
-        placeholder="Access code"
-        maxlength="20"
-        autocomplete="off"
-      />
-      <button class="gate-btn" onclick="unlock()">Enter</button>
-    </div>
+<!-- GATE -->
+<div id="gate">
+  <span class="gate-mark">Unreal.ae</span>
+  <span class="gate-title">Mission Control</span>
+  <div class="gate-form">
+    <input id="pwd" class="gate-input" type="password" placeholder="Access code" maxlength="20" autocomplete="off"/>
+    <button class="gate-btn" onclick="unlock()">Enter</button>
   </div>
+</div>
 
-  <!-- SHELL -->
-  <div id="shell">
-    <div class="topbar">
-      <span class="topbar-logo">Unreal</span>
-      <span class="topbar-label">Command Center</span>
+<!-- SHELL -->
+<div id="shell">
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-logo">Unreal OS</span>
+      <div class="topbar-dot" id="statusDot"></div>
+      <span class="topbar-status" id="statusText">Loading...</span>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-refresh" onclick="loadData()">Refresh</button>
       <button class="topbar-lock" onclick="lock()">Lock</button>
     </div>
-    <iframe
-      id="frame"
-      src=""
-      allow="clipboard-read; clipboard-write"
-    ></iframe>
   </div>
 
-  <script>
-    const PASS = '2403';
-    const DASH = 'https://become-sugar-notifications-window.trycloudflare.com';
-    const KEY  = 'unreal_dash_auth';
+  <div class="tabbar">
+    <button class="tab active" onclick="switchTab('agents')">Agents</button>
+    <button class="tab" onclick="switchTab('brain')">Brain Map</button>
+    <button class="tab" onclick="switchTab('warroom')">War Room</button>
+  </div>
 
-    const gate  = document.getElementById('gate');
-    const shell = document.getElementById('shell');
-    const frame = document.getElementById('frame');
-    const pwd   = document.getElementById('pwd');
+  <div class="content">
+    <!-- AGENTS VIEW -->
+    <div id="view-agents" class="view active">
+      <div class="agents-grid" id="agentGrid"></div>
+      <div class="last-updated" id="agentsUpdated"></div>
+    </div>
 
-    function unlock() {
-      if (pwd.value === PASS) {
-        sessionStorage.setItem(KEY, '1');
-        gate.classList.add('hidden');
-        shell.classList.add('visible');
-        frame.src = DASH;
-      } else {
-        pwd.classList.add('error');
-        pwd.value = '';
-        setTimeout(() => pwd.classList.remove('error'), 600);
-      }
-    }
+    <!-- BRAIN VIEW -->
+    <div id="view-brain" class="view">
+      <div class="brain-grid" id="brainGrid"></div>
+    </div>
 
-    function lock() {
-      sessionStorage.removeItem(KEY);
-      frame.src = '';
-      shell.classList.remove('visible');
-      gate.classList.remove('hidden');
-      pwd.value = '';
-      pwd.focus();
-    }
+    <!-- WAR ROOM VIEW -->
+    <div id="view-warroom" class="view">
+      <div class="warroom-grid">
+        <div class="activity-feed">
+          <div class="feed-header">Recent Activity</div>
+          <div class="feed-list" id="activityFeed"></div>
+        </div>
+        <div class="warroom-sidebar">
+          <div class="standup-card">
+            <div class="standup-title">War Room Standup</div>
+            <div class="standup-desc">Fans a synthesis prompt across all active agents and consolidates their status into one brief.</div>
+            <button class="standup-btn" onclick="triggerStandup()">Run /standup</button>
+          </div>
+          <div class="tasks-card">
+            <div class="tasks-header">Active Tasks</div>
+            <div class="tasks-list" id="tasksList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    pwd.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+<script>
+const PASS   = '2403';
+const KEY    = 'unreal_mc_auth';
+const DATA_URL = '/data/status.json';
 
-    // Auto-unlock if already authenticated this session
-    if (sessionStorage.getItem(KEY) === '1') {
-      gate.classList.add('hidden');
-      shell.classList.add('visible');
-      frame.src = DASH;
-    } else {
-      pwd.focus();
-    }
-  </script>
+const PROFILE_ICONS = {
+  orchestrator: 'OR', creative: 'CR', dev: 'DV',
+  strategist: 'ST', finance: 'FN', content: 'CO',
+  comms: 'CM', leads: 'LD', strategy: 'SY'
+};
+
+let DATA = null;
+let activeTab = 'agents';
+
+// ── Auth ────────────────────────────────────────────────────────────────
+function unlock() {
+  const pwd = document.getElementById('pwd');
+  if (pwd.value === PASS) {
+    sessionStorage.setItem(KEY, '1');
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('shell').classList.add('visible');
+    loadData();
+  } else {
+    pwd.classList.add('error');
+    pwd.value = '';
+    setTimeout(() => pwd.classList.remove('error'), 600);
+  }
+}
+function lock() {
+  sessionStorage.removeItem(KEY);
+  document.getElementById('shell').classList.remove('visible');
+  document.getElementById('gate').classList.remove('hidden');
+  document.getElementById('pwd').value = '';
+  document.getElementById('pwd').focus();
+}
+document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+if (sessionStorage.getItem(KEY) === '1') {
+  document.getElementById('gate').classList.add('hidden');
+  document.getElementById('shell').classList.add('visible');
+  loadData();
+} else {
+  document.getElementById('pwd').focus();
+}
+
+// ── Data loading ────────────────────────────────────────────────────────
+async function loadData() {
+  document.getElementById('statusText').textContent = 'Refreshing...';
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    DATA = await res.json();
+    renderAll();
+    const ts = new Date(DATA.generated_at);
+    document.getElementById('statusText').textContent = 'Updated ' + relTime(ts);
+    document.getElementById('statusDot').style.background = 'var(--green)';
+    document.getElementById('statusDot').style.boxShadow = '0 0 6px var(--green)';
+  } catch (e) {
+    document.getElementById('statusText').textContent = 'Offline';
+    document.getElementById('statusDot').style.background = 'var(--red)';
+    document.getElementById('statusDot').style.boxShadow = 'none';
+  }
+}
+
+setInterval(loadData, 5 * 60 * 1000);
+
+// ── Tabs ────────────────────────────────────────────────────────────────
+function switchTab(id) {
+  activeTab = id;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('view-' + id).classList.add('active');
+}
+
+// ── Render ────────────────────────────────────────────────────────────
+function renderAll() {
+  if (!DATA) return;
+  renderAgents();
+  renderBrain();
+  renderWarRoom();
+}
+
+function renderAgents() {
+  const grid = document.getElementById('agentGrid');
+  grid.innerHTML = '';
+  (DATA.profiles || []).forEach(p => {
+    const icon = PROFILE_ICONS[p.id] || p.id.slice(0, 2).toUpperCase();
+    const statusClass = 'agent-card status-' + p.status;
+    const scheduleHtml = (p.schedules || []).map(s =>
+      `<div class="schedule-pill"><span class="pill-dot"></span>${esc(s.cron || s.description || s.skill)}</div>`
+    ).join('');
+
+    const lastAct = p.last_activity_rel
+      ? `<div class="agent-meta-row"><span class="meta-label">Last run</span><span class="meta-value">${esc(p.last_activity_rel)}</span></div>`
+      : '';
+    const sessCount = p.total_sessions > 0
+      ? `<div class="agent-meta-row"><span class="meta-label">Sessions</span><span class="meta-value">${p.total_sessions}</span></div>`
+      : '';
+
+    grid.innerHTML += `
+      <div class="${statusClass}">
+        <div class="agent-header">
+          <div>
+            <div class="agent-name">${esc(p.name)}</div>
+            <div class="agent-role">${esc(p.role)}</div>
+          </div>
+          <div class="agent-status-badge">
+            <span class="status-dot ${p.status}"></span>
+            <span class="status-label ${p.status}">${p.status}</span>
+          </div>
+        </div>
+        <div class="agent-meta">
+          ${lastAct}
+          ${sessCount}
+        </div>
+        ${scheduleHtml ? `<div class="agent-schedules">${scheduleHtml}</div>` : ''}
+      </div>`;
+  });
+}
+
+function renderBrain() {
+  const grid = document.getElementById('brainGrid');
+  if (!DATA.brain) { grid.innerHTML = '<div class="empty-state">No brain data loaded</div>'; return; }
+  const b = DATA.brain;
+
+  // Financial card
+  const fin = b.financial || {};
+  const current = parseInt(fin.current_monthly || 0);
+  const target  = parseInt(fin.freedom_number || 25000);
+  const pct     = target > 0 ? Math.min(100, Math.round((current / target) * 100)) : 0;
+  const enbd    = fin.enbd_current || '--';
+
+  grid.innerHTML = `
+    <div class="brain-card">
+      <div class="brain-card-title">Financial Pulse</div>
+      <div class="finance-stat">
+        <div class="stat-row">
+          <span class="stat-label">ENBD Balance</span>
+          <span class="stat-value">${esc(enbd)}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Studio Revenue (est.)</span>
+          <span class="stat-value ${current >= target ? 'green' : 'yellow'}">${current.toLocaleString()} AED/mo</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-label"><span>Freedom number progress</span><span>${pct}%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+          <div class="progress-label" style="margin-top:4px;"><span></span><span>Target: ${target.toLocaleString()} AED/mo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brain-card">
+      <div class="brain-card-title">Lead Pipeline</div>
+      <div class="leads-stats">
+        <div class="leads-stat">
+          <div class="leads-number">${b.leads.pipeline_count || 0}</div>
+          <div class="leads-sublabel">In Pipeline</div>
+        </div>
+        <div class="leads-stat">
+          <div class="leads-number hot">${b.leads.hot || 0}</div>
+          <div class="leads-sublabel">Hot</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brain-card">
+      <div class="brain-card-title">Active Projects</div>
+      <div class="project-list">
+        ${(b.projects || []).map(p => `
+          <div class="project-row">
+            <span class="project-name">${esc(p.name)}</span>
+            <span class="project-badge ${p.status.toLowerCase().replace(' ', '-')}">${esc(p.status)}</span>
+          </div>`).join('') || '<div class="empty-state" style="padding:12px 0">No projects loaded</div>'}
+      </div>
+    </div>
+
+    <div class="brain-card">
+      <div class="brain-card-title">Strategy Focus</div>
+      <div class="strategy-text">${esc(b.strategy_focus || '--')}</div>
+    </div>`;
+}
+
+function renderWarRoom() {
+  // Activity feed
+  const feed = document.getElementById('activityFeed');
+  feed.innerHTML = '';
+  (DATA.activity || []).forEach(a => {
+    const icon = a.agent ? a.agent.slice(0,2).toUpperCase() : '??';
+    feed.innerHTML += `
+      <div class="feed-item">
+        <div class="feed-icon">${esc(icon)}</div>
+        <div class="feed-body">
+          <div class="feed-agent">${esc(a.agent || 'Hermes')}</div>
+          <div class="feed-title">${esc(a.title || a.source || 'Session')}</div>
+          <div class="feed-meta">
+            <span class="feed-tag">${esc(a.source || 'cli')}</span>
+            ${a.cost_usd > 0 ? `<span class="feed-tag">$${a.cost_usd}</span>` : ''}
+          </div>
+        </div>
+        <div class="feed-time">${esc(a.started_at_rel || '')}</div>
+      </div>`;
+  });
+  if (!DATA.activity || DATA.activity.length === 0) {
+    feed.innerHTML = '<div class="empty-state">No activity yet</div>';
+  }
+
+  // Tasks
+  const tasksList = document.getElementById('tasksList');
+  tasksList.innerHTML = '';
+  const tasks = DATA.tasks || [];
+  if (tasks.length === 0) {
+    tasksList.innerHTML = '<div class="empty-state" style="padding:16px">No active tasks</div>';
+  } else {
+    tasks.slice(0, 8).forEach(t => {
+      tasksList.innerHTML += `
+        <div class="task-row">
+          <div class="task-dot ${(t.status || 'open').replace(' ','_')}"></div>
+          <div class="task-title">${esc(t.title || 'Untitled')}</div>
+          <div class="task-assignee">${esc(t.assignee || '')}</div>
+        </div>`;
+    });
+  }
+}
+
+async function triggerStandup() {
+  const btn = document.querySelector('.standup-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    await fetch('/api/standup', { method: 'POST' });
+    btn.textContent = 'Sent to Telegram';
+    setTimeout(() => { btn.disabled = false; btn.textContent = 'Run /standup'; }, 5000);
+  } catch (e) {
+    btn.textContent = 'Send /standup via Telegram';
+    btn.disabled = false;
+  }
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function relTime(d) {
+  const diff = Math.floor((Date.now() - d.getTime()) / 1000);
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  return Math.floor(diff/86400) + 'd ago';
+}
+</script>
 </body>
 </html>
