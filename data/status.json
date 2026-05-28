@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T19:40:01Z",
+  "generated_at": "2026-05-28T19:45:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -230,7 +230,7 @@
       "source": "cli",
       "title": null,
       "started_at": "2026-05-28T05:41:06Z",
-      "started_at_rel": "13h ago",
+      "started_at_rel": "14h ago",
       "cost_usd": 0.0
     },
     {
