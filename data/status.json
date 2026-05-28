@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T17:05:01Z",
+  "generated_at": "2026-05-28T17:10:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -18,7 +18,7 @@
       "role": "Content Pipeline",
       "status": "active",
       "last_activity": "2026-05-28T16:57:31Z",
-      "last_activity_rel": "7m ago",
+      "last_activity_rel": "12m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -36,7 +36,7 @@
       "role": "Visual & CGI",
       "status": "active",
       "last_activity": "2026-05-28T16:57:31Z",
-      "last_activity_rel": "7m ago",
+      "last_activity_rel": "12m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -47,7 +47,7 @@
       "role": "Website Delivery",
       "status": "active",
       "last_activity": "2026-05-28T16:57:31Z",
-      "last_activity_rel": "7m ago",
+      "last_activity_rel": "12m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -76,7 +76,7 @@
       "role": "Lead Generation",
       "status": "active",
       "last_activity": "2026-05-28T16:57:31Z",
-      "last_activity_rel": "7m ago",
+      "last_activity_rel": "12m ago",
       "last_session_title": null,
       "total_sessions": 2,
       "schedules": [
@@ -100,7 +100,7 @@
       "role": "System Conductor",
       "status": "active",
       "last_activity": "2026-05-28T16:57:31Z",
-      "last_activity_rel": "7m ago",
+      "last_activity_rel": "12m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -174,7 +174,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T16:57:31Z",
-      "started_at_rel": "7m ago",
+      "started_at_rel": "12m ago",
       "cost_usd": 0.0342
     },
     {
@@ -182,7 +182,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T16:46:41Z",
-      "started_at_rel": "18m ago",
+      "started_at_rel": "23m ago",
       "cost_usd": 0.0434
     },
     {
@@ -198,7 +198,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T06:09:46Z",
-      "started_at_rel": "10h ago",
+      "started_at_rel": "11h ago",
       "cost_usd": 0.5368
     },
     {
@@ -230,7 +230,7 @@
       "source": "telegram",
       "title": "Planning a new project or product #2",
       "started_at": "2026-05-27T20:05:46Z",
-      "started_at_rel": "20h ago",
+      "started_at_rel": "21h ago",
       "cost_usd": 0.0
     },
     {
