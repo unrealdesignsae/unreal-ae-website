@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:45:01Z",
+  "generated_at": "2026-05-28T16:50:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -16,9 +16,9 @@
       "id": "content",
       "name": "Content",
       "role": "Content Pipeline",
-      "status": "recent",
-      "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "5h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T16:46:41Z",
+      "last_activity_rel": "3m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -34,9 +34,9 @@
       "id": "creative",
       "name": "Creative",
       "role": "Visual & CGI",
-      "status": "recent",
-      "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "5h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T16:46:41Z",
+      "last_activity_rel": "3m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -45,9 +45,9 @@
       "id": "dev",
       "name": "Dev",
       "role": "Website Delivery",
-      "status": "recent",
-      "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "5h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T16:46:41Z",
+      "last_activity_rel": "3m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -74,11 +74,11 @@
       "id": "leads",
       "name": "Leads",
       "role": "Lead Generation",
-      "status": "scheduled",
-      "last_activity": null,
-      "last_activity_rel": null,
+      "status": "active",
+      "last_activity": "2026-05-28T16:46:41Z",
+      "last_activity_rel": "3m ago",
       "last_session_title": null,
-      "total_sessions": 0,
+      "total_sessions": 1,
       "schedules": [
         {
           "id": "daily-lead-scan",
@@ -98,9 +98,9 @@
       "id": "orchestrator",
       "name": "Orchestrator",
       "role": "System Conductor",
-      "status": "recent",
-      "last_activity": "2026-05-28T11:33:22Z",
-      "last_activity_rel": "5h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T16:46:41Z",
+      "last_activity_rel": "3m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -169,6 +169,14 @@
   },
   "tasks": [],
   "activity": [
+    {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-28T16:46:41Z",
+      "started_at_rel": "3m ago",
+      "cost_usd": 0.0282
+    },
     {
       "agent": "Ninja",
       "source": "email",
@@ -280,14 +288,6 @@
       "started_at": "2026-05-27T06:01:19Z",
       "started_at_rel": "1d ago",
       "cost_usd": 0.0885
-    },
-    {
-      "agent": "Ninja",
-      "source": "cli",
-      "title": "SSH Configuration Change Warning",
-      "started_at": "2026-05-27T05:57:48Z",
-      "started_at_rel": "1d ago",
-      "cost_usd": 0.0776
     }
   ]
 }
