@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T21:45:01Z",
+  "generated_at": "2026-05-28T21:50:02Z",
   "profiles": [
     {
       "id": "comms",
@@ -16,9 +16,9 @@
       "id": "content",
       "name": "Content",
       "role": "Content Pipeline",
-      "status": "recent",
-      "last_activity": "2026-05-28T17:12:54Z",
-      "last_activity_rel": "4h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T21:48:16Z",
+      "last_activity_rel": "1m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -35,8 +35,8 @@
       "name": "Creative",
       "role": "Visual & CGI",
       "status": "active",
-      "last_activity": "2026-05-28T21:36:33Z",
-      "last_activity_rel": "8m ago",
+      "last_activity": "2026-05-28T21:48:16Z",
+      "last_activity_rel": "1m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -45,9 +45,9 @@
       "id": "dev",
       "name": "Dev",
       "role": "Website Delivery",
-      "status": "recent",
-      "last_activity": "2026-05-28T17:12:54Z",
-      "last_activity_rel": "4h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T21:48:16Z",
+      "last_activity_rel": "1m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -74,9 +74,9 @@
       "id": "leads",
       "name": "Leads",
       "role": "Lead Generation",
-      "status": "recent",
-      "last_activity": "2026-05-28T17:12:54Z",
-      "last_activity_rel": "4h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T21:48:16Z",
+      "last_activity_rel": "1m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -98,9 +98,9 @@
       "id": "orchestrator",
       "name": "Orchestrator",
       "role": "System Conductor",
-      "status": "recent",
-      "last_activity": "2026-05-28T17:12:54Z",
-      "last_activity_rel": "4h ago",
+      "status": "active",
+      "last_activity": "2026-05-28T21:48:16Z",
+      "last_activity_rel": "1m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -170,12 +170,20 @@
   "tasks": [],
   "activity": [
     {
+      "agent": "Ninja",
+      "source": "telegram",
+      "title": null,
+      "started_at": "2026-05-28T21:48:16Z",
+      "started_at_rel": "1m ago",
+      "cost_usd": 0.0166
+    },
+    {
       "agent": "Hermes",
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T21:36:33Z",
-      "started_at_rel": "8m ago",
-      "cost_usd": 0.0418
+      "started_at_rel": "13m ago",
+      "cost_usd": 0.0493
     },
     {
       "agent": "Ninja",
@@ -214,7 +222,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T16:46:41Z",
-      "started_at_rel": "4h ago",
+      "started_at_rel": "5h ago",
       "cost_usd": 0.0434
     },
     {
@@ -278,14 +286,6 @@
       "source": "telegram",
       "title": "Planning a new project or product",
       "started_at": "2026-05-27T08:46:28Z",
-      "started_at_rel": "1d ago",
-      "cost_usd": 0.0
-    },
-    {
-      "agent": "Ninja",
-      "source": "telegram",
-      "title": "Team Status and Overdue Items",
-      "started_at": "2026-05-27T08:10:28Z",
       "started_at_rel": "1d ago",
       "cost_usd": 0.0
     }
