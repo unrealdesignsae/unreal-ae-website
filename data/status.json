@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T21:40:01Z",
+  "generated_at": "2026-05-28T21:45:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -36,7 +36,7 @@
       "role": "Visual & CGI",
       "status": "active",
       "last_activity": "2026-05-28T21:36:33Z",
-      "last_activity_rel": "3m ago",
+      "last_activity_rel": "8m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -174,8 +174,8 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T21:36:33Z",
-      "started_at_rel": "3m ago",
-      "cost_usd": 0.0177
+      "started_at_rel": "8m ago",
+      "cost_usd": 0.0418
     },
     {
       "agent": "Ninja",
@@ -238,7 +238,7 @@
       "source": "cli",
       "title": null,
       "started_at": "2026-05-28T05:41:06Z",
-      "started_at_rel": "15h ago",
+      "started_at_rel": "16h ago",
       "cost_usd": 0.0
     },
     {
