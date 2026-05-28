@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:05:02Z",
+  "generated_at": "2026-05-28T16:10:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -182,7 +182,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T06:09:46Z",
-      "started_at_rel": "9h ago",
+      "started_at_rel": "10h ago",
       "cost_usd": 0.5368
     },
     {
@@ -214,7 +214,7 @@
       "source": "telegram",
       "title": "Planning a new project or product #2",
       "started_at": "2026-05-27T20:05:46Z",
-      "started_at_rel": "19h ago",
+      "started_at_rel": "20h ago",
       "cost_usd": 0.0
     },
     {
