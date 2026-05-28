@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T16:50:01Z",
+  "generated_at": "2026-05-28T16:55:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -18,7 +18,7 @@
       "role": "Content Pipeline",
       "status": "active",
       "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "3m ago",
+      "last_activity_rel": "8m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -36,7 +36,7 @@
       "role": "Visual & CGI",
       "status": "active",
       "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "3m ago",
+      "last_activity_rel": "8m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -47,7 +47,7 @@
       "role": "Website Delivery",
       "status": "active",
       "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "3m ago",
+      "last_activity_rel": "8m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -76,7 +76,7 @@
       "role": "Lead Generation",
       "status": "active",
       "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "3m ago",
+      "last_activity_rel": "8m ago",
       "last_session_title": null,
       "total_sessions": 1,
       "schedules": [
@@ -100,7 +100,7 @@
       "role": "System Conductor",
       "status": "active",
       "last_activity": "2026-05-28T16:46:41Z",
-      "last_activity_rel": "3m ago",
+      "last_activity_rel": "8m ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -174,8 +174,8 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T16:46:41Z",
-      "started_at_rel": "3m ago",
-      "cost_usd": 0.0282
+      "started_at_rel": "8m ago",
+      "cost_usd": 0.0434
     },
     {
       "agent": "Ninja",
