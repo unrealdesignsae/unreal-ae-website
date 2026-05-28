@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T20:45:01Z",
+  "generated_at": "2026-05-28T20:50:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -206,7 +206,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T16:46:41Z",
-      "started_at_rel": "3h ago",
+      "started_at_rel": "4h ago",
       "cost_usd": 0.0434
     },
     {
