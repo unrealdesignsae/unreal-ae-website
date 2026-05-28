@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T21:30:01Z",
+  "generated_at": "2026-05-28T21:35:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -175,7 +175,7 @@
       "title": null,
       "started_at": "2026-05-28T17:12:54Z",
       "started_at_rel": "4h ago",
-      "cost_usd": 0.0222
+      "cost_usd": 0.047
     },
     {
       "agent": "Ninja",
@@ -214,7 +214,7 @@
       "source": "email",
       "title": null,
       "started_at": "2026-05-28T11:33:22Z",
-      "started_at_rel": "9h ago",
+      "started_at_rel": "10h ago",
       "cost_usd": 0.0106
     },
     {
