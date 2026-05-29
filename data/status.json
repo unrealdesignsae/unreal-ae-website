@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T03:40:01Z",
+  "generated_at": "2026-05-29T03:45:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -175,7 +175,7 @@
       "title": null,
       "started_at": "2026-05-28T21:48:16Z",
       "started_at_rel": "5h ago",
-      "cost_usd": 0.0166
+      "cost_usd": 0.0654
     },
     {
       "agent": "Hermes",
@@ -246,7 +246,7 @@
       "source": "cli",
       "title": null,
       "started_at": "2026-05-28T05:41:06Z",
-      "started_at_rel": "21h ago",
+      "started_at_rel": "22h ago",
       "cost_usd": 0.0
     },
     {
