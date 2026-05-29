@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T01:45:01Z",
+  "generated_at": "2026-05-29T01:50:01Z",
   "profiles": [
     {
       "id": "comms",
@@ -18,7 +18,7 @@
       "role": "Content Pipeline",
       "status": "recent",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "3h ago",
+      "last_activity_rel": "4h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -36,7 +36,7 @@
       "role": "Visual & CGI",
       "status": "recent",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "3h ago",
+      "last_activity_rel": "4h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -47,7 +47,7 @@
       "role": "Website Delivery",
       "status": "recent",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "3h ago",
+      "last_activity_rel": "4h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -76,7 +76,7 @@
       "role": "Lead Generation",
       "status": "recent",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "3h ago",
+      "last_activity_rel": "4h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": [
@@ -100,7 +100,7 @@
       "role": "System Conductor",
       "status": "recent",
       "last_activity": "2026-05-28T21:48:16Z",
-      "last_activity_rel": "3h ago",
+      "last_activity_rel": "4h ago",
       "last_session_title": null,
       "total_sessions": 5,
       "schedules": []
@@ -174,7 +174,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T21:48:16Z",
-      "started_at_rel": "3h ago",
+      "started_at_rel": "4h ago",
       "cost_usd": 0.0166
     },
     {
@@ -222,7 +222,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T16:46:41Z",
-      "started_at_rel": "8h ago",
+      "started_at_rel": "9h ago",
       "cost_usd": 0.0434
     },
     {
