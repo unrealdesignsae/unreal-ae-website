@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T00:10:01Z",
+  "generated_at": "2026-05-29T00:15:02Z",
   "profiles": [
     {
       "id": "comms",
@@ -190,7 +190,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T17:12:54Z",
-      "started_at_rel": "6h ago",
+      "started_at_rel": "7h ago",
       "cost_usd": 0.047
     },
     {
@@ -198,7 +198,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T17:12:34Z",
-      "started_at_rel": "6h ago",
+      "started_at_rel": "7h ago",
       "cost_usd": 0.0
     },
     {
@@ -206,7 +206,7 @@
       "source": "telegram",
       "title": null,
       "started_at": "2026-05-28T17:11:24Z",
-      "started_at_rel": "6h ago",
+      "started_at_rel": "7h ago",
       "cost_usd": 0.0226
     },
     {
